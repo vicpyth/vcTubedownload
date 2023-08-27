@@ -24,7 +24,7 @@ def download_audio(youtube_url, audio_name=None):
 
 def main():
     st.title("Vtube Music Downloader")
-    url = st.text_input("Enter YouTube video link or URL", placeholder="https://www.youtube.com/watch?v=mqSQvoinDE4")
+    url = st.text_input("Enter YouTube video link or URL", placeholder="https://youtu.be/idQ1n3cdgfo")
 
     if "yout" in url:
         # Ask for permission to download to download folder
