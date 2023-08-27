@@ -26,7 +26,7 @@ def main():
     st.title("Vtube Music Downloader")
     url = st.text_input("Enter YouTube video link or URL", placeholder="https://www.youtube.com/watch?v=mqSQvoinDE4")
 
-    if "youtube" in url:
+    if "yout" in url:
         # Ask for permission to download to download folder
         permission = st.checkbox(f"Do you give permission to download the audio file to {download_folder}?")
         
