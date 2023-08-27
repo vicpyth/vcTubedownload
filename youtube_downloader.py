@@ -23,7 +23,7 @@ def download_audio(youtube_url, audio_name=None):
     return downloaded_file_path
 
 def main():
-    st.title("Vtube Music Downloader")
+    st.title("Vtube Music Downloader(Pa janm Sispann goumen pou saw kwe)")
     url = st.text_input("Enter YouTube video link or URL", placeholder="https://youtu.be/idQ1n3cdgfo")
 
     if "yout" in url:
