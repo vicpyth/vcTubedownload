@@ -13,6 +13,10 @@ default_audio_name = "download_2023.mp3"
 
 
 
+# import os
+# import imageio_ffmpeg as ffmpeg
+
+
 def download_audio(youtube_url, audio_name=None):
     if audio_name:
         output_filename = f"{audio_name}.%(ext)s"
@@ -45,7 +49,8 @@ def download_audio(youtube_url, audio_name=None):
     return f"{download_folder}/{output_filename.replace('%(ext)s', 'mp3')}"  # Adjust the extension here
 
 
-default_video_name = "download.mp4"
+
+
 
 
 def main():
