@@ -23,30 +23,17 @@ def download_audio(youtube_url, audio_name=None):
     else:
         output_filename = f"{default_audio_name}.%(ext)s"
     
-    # Set the ffmpeg path in the environment
-    ffmpeg_path = ffmpeg.get_ffmpeg_exe()
-    os.environ["FFMPEG_PATH"] = ffmpeg_path
-    # Construct the ffprobe path based on the ffmpeg path and set it in the environment
-    ffprobe_path = os.path.join(os.path.dirname(ffmpeg_path), "ffprobe")
-    os.environ["FFPROBE_PATH"] = ffprobe_path
-    
     options = {
         'format': 'bestaudio/best',
-        'extractaudio': True,
-        'audioformat': 'mp3',  # Change the format here
-        'outtmpl': f"{download_folder}/{output_filename}",
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',  # And change the codec here
-            'preferredquality': '192'  # Adjust quality as per the codec's capabilities
-        }]
+        'outtmpl': f"{download_folder}/{output_filename}"
     }
 
     with yt_dlp.YoutubeDL(options) as ydl:
-        ydl.download([youtube_url])
-    
-    # Return the expected file path
-    return f"{download_folder}/{output_filename.replace('%(ext)s', 'mp3')}"  # Adjust the extension here
+        info_dict = ydl.extract_info(youtube_url, download=True)
+        # The full path to the downloaded file
+        file_path = ydl.prepare_filename(info_dict)
+
+    return file_path
 
 
 
