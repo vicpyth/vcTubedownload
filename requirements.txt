@@ -56,3 +56,5 @@ watchdog==3.0.0
 websockets==11.0.3
 yt-dlp==2023.7.6
 zipp==3.16.2
+imageio[ffmpeg]
+
