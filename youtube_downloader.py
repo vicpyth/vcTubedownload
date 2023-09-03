@@ -2,6 +2,7 @@ import os
 import streamlit as st
 import base64
 import yt_dlp
+import imageio_ffmpeg as ffmpeg
 
 # Dynamically get the user's download directory
 user_home = os.path.expanduser("~")
@@ -18,15 +19,19 @@ def download_audio(youtube_url, audio_name=None):
     else:
         output_filename = f"{default_audio_name}.%(ext)s"
     
+    ffmpeg_path = ffmpeg.get_ffmpeg_exe()
+    
     options = {
         'format': 'bestaudio/best',
         'extractaudio': True,
         'audioformat': 'mp3',
         'outtmpl': f"{download_folder}/{output_filename}",
+        'ffmpeg_location': ffmpeg_path,
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
-            'preferredquality': '192'
+            'preferredquality': '192',
+            'ffmpeg_location': ffmpeg_path
         }]
     }
 
